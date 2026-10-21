@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mirage — Headphone Concept
 
-## Getting Started
+> The city hums in one key. You walk in yours.
 
-First, run the development server:
+An interactive, scroll-driven website for an independent headphone concept by **Mirage**. It is a design study, not an official product site.
+
+**Live site:** https://mirage-headphones.vercel.app
+
+## What's inside
+
+- **A walk, in step** (`/`): a 300-frame walking animation that plays as you scroll, drawn on a canvas and loaded progressively.
+- **Product intro**: a transparent product render with scroll-cued typography.
+- **Design story** (`/design`): an interactive chameleon portrait. Its eyes follow your cursor and its head turns toward it, using a WebGL warp with SVG-masked iris layers. It stays still on touch devices and for visitors who prefer reduced motion.
+
+## Tech
+
+- [Next.js 16](https://nextjs.org) (App Router, Turbopack), React 19, TypeScript
+- Tailwind CSS v4
+- WebGL for the head movement, plus canvas and SVG for the frame sequence and eyes
+
+## Run it locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project layout
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/app/page.tsx                  Home: hero, product intro, scroll walk
+src/app/design/page.tsx           Design story chapter
+src/components/ScrollWalk.tsx     Scroll-driven frame sequence
+src/components/InteractiveChameleon.tsx   Cursor-tracking eyes and head
+src/lib/headWarp.ts               WebGL head-turn warp
+src/lib/chameleonEyes.ts          Eye and head positions on the image
+public/images/                    Frames and artwork
+```
 
-## Learn More
+## Deploy
 
-To learn more about Next.js, take a look at the following resources:
+Every push to `main` deploys automatically to Vercel.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© Mirage. An independent concept, not affiliated with any brand shown.

@@ -12,10 +12,33 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Absolute base for share images: your Vercel production URL when deployed.
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : "http://localhost:3000";
+
 export const metadata: Metadata = {
-  title: "Headphones — A Cinematic Engineering Concept",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Mirage — Headphone Concept",
+    template: "%s · Mirage",
+  },
   description:
-    "A scroll-driven, cinematic study of a reference headphone — design philosophy, materials, and architecture. An independent concept presentation, not an official product site.",
+    "The city hums in one key. You walk in yours. An interactive, scroll-driven headphone concept by Mirage — an independent design study.",
+  applicationName: "Mirage",
+  openGraph: {
+    type: "website",
+    siteName: "Mirage",
+    title: "Mirage — Headphone Concept",
+    description:
+      "The city hums in one key. You walk in yours. An interactive headphone concept.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mirage — Headphone Concept",
+    description:
+      "The city hums in one key. You walk in yours. An interactive headphone concept.",
+  },
   robots: { index: true, follow: true },
 };
 

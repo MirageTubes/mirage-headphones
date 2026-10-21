@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import InteractiveChameleon from "@/components/InteractiveChameleon";
 import { Space_Grotesk, IBM_Plex_Mono } from "next/font/google";
@@ -15,6 +16,12 @@ const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-ibm-plex-mono",
   display: "swap",
 });
+
+export const metadata: Metadata = {
+  title: "Design Story",
+  description:
+    "Chapter 01 — Character. Different by nature: an interactive portrait from the Mirage headphone concept.",
+};
 
 const WARM_WHITE = "#f3ece0";
 const WARM_MUTED = "#b9b2a4";
@@ -139,13 +146,37 @@ export default function DesignPage() {
       </section>
 
       <footer
-        className="px-6 pb-10 text-center text-[10px] uppercase tracking-[0.5em] md:px-10"
+        className="flex flex-col items-center gap-6 px-6 pb-12 text-center md:px-10"
         style={{
           fontFamily: "var(--font-ibm-plex-mono), ui-monospace, monospace",
-          color: WARM_MUTED,
         }}
       >
-        A design story
+        <span
+          aria-hidden
+          className="inline-block h-px w-10"
+          style={{ background: ACCENT }}
+        />
+        <Link
+          href="/#walk"
+          className="group inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.42em] transition-colors"
+          style={{ color: WARM_WHITE }}
+        >
+          <span style={{ color: ACCENT }}>Next</span>
+          A walk, in step
+          <span
+            aria-hidden
+            className="inline-block transition-transform group-hover:translate-x-1"
+            style={{ color: ACCENT }}
+          >
+            →
+          </span>
+        </Link>
+        <span
+          className="text-[10px] uppercase tracking-[0.5em]"
+          style={{ color: WARM_MUTED }}
+        >
+          A design story
+        </span>
       </footer>
     </main>
   );

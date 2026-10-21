@@ -43,3 +43,6 @@ next-env.d.ts
 # python (local image tools)
 .venv/
 __pycache__/
+
+# unused assets kept locally, not deployed
+_unused/

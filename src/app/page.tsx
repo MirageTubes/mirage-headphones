@@ -5,9 +5,9 @@ import ScrollWalk from "@/components/ScrollWalk";
 export default function Home() {
   return (
     <main className="relative bg-[var(--background)] text-[var(--foreground)]">
-      <header className="fixed inset-x-0 top-0 z-40 flex items-center justify-between px-6 py-6">
+      <header className="fixed inset-x-0 top-0 z-40 flex items-center justify-between px-6 py-6 md:px-12 lg:px-16">
         <span className="pointer-events-none text-[10px] font-semibold uppercase tracking-[0.5em] text-[var(--foreground)]/70">
-          nothing
+          Mirage
         </span>
         <Link
           href="/design"
@@ -113,16 +113,18 @@ export default function Home() {
 
       <ProductIntro />
 
-      <ScrollWalk
-        basePath="/images/walk-sequence/ezgif-frame-"
-        pad={3}
-        ext=".png"
-        frameCount={300}
-        frameWidth={1920}
-        frameHeight={1080}
-        scrollLengthVh={450}
-        staticFrame={150}
-      />
+      <div id="walk">
+        <ScrollWalk
+          basePath="/images/walk-sequence/ezgif-frame-"
+          pad={3}
+          ext=".webp"
+          frameCount={300}
+          frameWidth={1920}
+          frameHeight={1080}
+          scrollLengthVh={450}
+          staticFrame={150}
+        />
+      </div>
 
       <footer className="relative px-6 pb-12 pt-10 text-center text-[10px] uppercase tracking-[0.42em] text-[var(--muted)]/70">
         Companions in sound
