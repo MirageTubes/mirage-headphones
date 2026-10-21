@@ -1,69 +1,132 @@
-import Image from "next/image";
+import Link from "next/link";
+import ProductIntro from "@/components/ProductIntro";
+import ScrollWalk from "@/components/ScrollWalk";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <main className="relative bg-[var(--background)] text-[var(--foreground)]">
+      <header className="fixed inset-x-0 top-0 z-40 flex items-center justify-between px-6 py-6">
+        <span className="pointer-events-none text-[10px] font-semibold uppercase tracking-[0.5em] text-[var(--foreground)]/70">
+          nothing
+        </span>
+        <Link
+          href="/design"
+          className="group inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.42em] text-[var(--foreground)]/70 transition-colors hover:text-[var(--foreground)]"
+        >
+          Design story
+          <span
+            aria-hidden
+            className="inline-block h-px w-6 bg-[var(--accent)] transition-all group-hover:w-10"
+          />
+        </Link>
+      </header>
+
+      <section className="relative flex min-h-[100svh] flex-col px-6 pb-16 pt-24 md:px-12 md:pb-20 md:pt-28 lg:px-16">
+        <div
+          className="hero-rise flex items-center justify-between text-[10px] uppercase tracking-[0.42em] text-[var(--muted)]"
+          style={{ animationDelay: "0ms" }}
+        >
+          <span>Field notes · N° 01</span>
+          <span className="hidden sm:inline">An independent concept</span>
+        </div>
+
+        <div className="mt-14 grid w-full gap-10 md:mt-20 md:grid-cols-12 md:items-end md:gap-12">
+          <p
+            className="font-light leading-[0.98] tracking-[-0.025em] md:col-span-8"
+            style={{ fontSize: "clamp(2.6rem, 7vw, 6.5rem)" }}
+          >
+            {[
+              { text: <>The city hums</>, delay: 120 },
+              { text: <>in one key.</>, delay: 240 },
+              {
+                text: (
+                  <>
+                    You walk in{" "}
+                    <span className="text-[var(--accent)]">yours</span>.
+                  </>
+                ),
+                delay: 380,
+              },
+            ].map((line, i) => (
+              <span
+                key={i}
+                className="-mb-[0.12em] block overflow-hidden pb-[0.12em]"
+              >
+                <span
+                  className="hero-line block"
+                  style={{ animationDelay: `${line.delay}ms` }}
+                >
+                  {line.text}
+                </span>
+              </span>
+            ))}
+          </p>
+
+          <div className="md:col-span-4 md:pb-4">
+            <p
+              className="hero-rise max-w-[38ch] text-sm leading-relaxed text-[var(--muted)] md:text-[0.95rem]"
+              style={{ animationDelay: "650ms" }}
+            >
+              Made for the space between places — the crosswalk, the long way
+              home, the friend who never misses a step. Open when you want the
+              world in. Quiet when you don&rsquo;t.
+            </p>
+            <ol
+              className="hero-rise mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[10px] uppercase tracking-[0.36em] text-[var(--foreground)]/60"
+              style={{ animationDelay: "800ms" }}
+            >
+              <li>
+                <span className="mr-2 text-[var(--accent)]">01</span>Listen
+              </li>
+              <li>
+                <span className="mr-2 text-[var(--accent)]">02</span>Move
+              </li>
+              <li>
+                <span className="mr-2 text-[var(--accent)]">03</span>Belong
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div className="mt-auto flex flex-col items-center pt-20 text-center">
+          <div
+            className="hero-rise h-px w-10 bg-[var(--accent)]"
+            style={{ animationDelay: "950ms" }}
+          />
+          <h1
+            className="hero-rise mt-8 max-w-[22ch] text-balance font-light leading-[1.05] tracking-tight"
+            style={{
+              fontSize: "clamp(2rem, 5vw, 3.75rem)",
+              animationDelay: "1050ms",
+            }}
+          >
+            A walk, in step.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p
+            className="hero-rise mt-8 text-[10px] uppercase tracking-[0.42em] text-[var(--muted)]"
+            style={{ animationDelay: "1200ms" }}
+          >
+            Scroll to walk
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+
+      <ProductIntro />
+
+      <ScrollWalk
+        basePath="/images/walk-sequence/ezgif-frame-"
+        pad={3}
+        ext=".png"
+        frameCount={300}
+        frameWidth={1920}
+        frameHeight={1080}
+        scrollLengthVh={450}
+        staticFrame={150}
+      />
+
+      <footer className="relative px-6 pb-12 pt-10 text-center text-[10px] uppercase tracking-[0.42em] text-[var(--muted)]/70">
+        Companions in sound
+      </footer>
+    </main>
   );
 }
